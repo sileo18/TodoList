@@ -43,9 +43,11 @@ function App() {
     }
   ])
 
+  const [isOpen, setIsOpen] = useState(false)
+
   return (
     <div className='min-h-screen'>
-
+      
         <Header />
 
       <div className='flex justify-around px-4 py-4'>
@@ -60,11 +62,11 @@ function App() {
 
       {/* Button New Task */}
 
-      <ButtonNewTask />
+      <ButtonNewTask setIsOpen={setIsOpen} />
 
      {/* Todo Form */}   
 
-    <TodoForm isOpen={false} />
+      {isOpen ? <TodoForm /> : null}
 
     </div>
 

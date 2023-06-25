@@ -20,6 +20,6 @@ export default function TodoTask( { todo } ) {
               Done</div> 
 
             </div>  
-          </div> 
+    </div> 
   )
 }

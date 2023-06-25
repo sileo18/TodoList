@@ -10,7 +10,7 @@ export default function Header() {
 
         <div className='flex gap-2 mr-4'>
 
-          <input className='rounded-full h-8 w-80' type="text" name="" id="" />
+          <input className='rounded-full h-8 w-80 px-2' type="text" name="" id="" />
           <button type='submit' className='hover:scale-95'><BsSearch size={'16px'} color='#ffffff' /></button>
 
         </div>
