@@ -54,13 +54,33 @@ function App() {
     setTodo(tasks);
   };
 
+  const updateTask = (id, updatedText, updatedCategory, updatedDate) => {
+    const tasks = [...todo];
+
+    const updatedTasks = tasks.map((task) => {
+      if (task.id === id) {
+        return {
+          ...task,
+          text: updatedText,
+          category: updatedCategory,
+          date: updatedDate,
+          isDone: false,
+        };
+      }
+      return task;
+    });
+  
+    setTodo(updatedTasks);
+  
+    console.log(id, updatedText, updatedCategory, updatedDate, false);
+  };
+
   const [search, setSearch] = useState("");
 
   const [edit, setEditOpen] = useState(true);
 
   return (
     <div className="min-h-screen">
-
       {/*Header*/}
       <Header search={search} setSearch={setSearch} />
 
@@ -75,7 +95,7 @@ function App() {
               todo={todo}
               removeTask={removeTask}
               doneTask={doneTask}
-              setEdit={setEdit}
+              setEditOpen={setEditOpen}
             />
           ))}
       </div>
@@ -90,8 +110,14 @@ function App() {
         <TodoForm addNewTask={addNewTask} setIsOpen={setIsOpen} />
       ) : null}
 
-      {edit ? <EditTask edit={edit} setEditOpen={setEditOpen} /> : null}
-
+      {edit ? (
+        <EditTask
+          edit={edit}
+          setEditOpen={setEditOpen}
+          todo={todo}
+          updateTask={updateTask}
+        />
+      ) : null}
     </div>
   );
 }
